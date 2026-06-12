@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
+
+import { Payment } from '../../models/payment';
+import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-roomie-dashboard',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './roomie-dashboard.component.html',
   styleUrl: './roomie-dashboard.component.scss'
 })
-export class RoomieDashboardComponent {
+export class RoomieDashboardComponent implements OnInit {
+
+  payments$!: Observable<Payment[]>;
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private paymentService: PaymentService
   ) {}
 
-  async logout() {
+  ngOnInit(): void {
 
-    await this.authService.logout();
-
-    this.router.navigate(['/login']);
+    this.payments$ =
+      this.paymentService.getPayments();
   }
 
 }
