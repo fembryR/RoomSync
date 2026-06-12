@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 
 import { Property } from '../../models/property';
 import { PropertyService } from '../../services/property.service';
+import { Building } from '../../models/building';
+import { BuildingService } from '../../services/building.service';
 
 @Component({
   selector: 'app-properties',
@@ -21,12 +23,23 @@ export class PropertiesComponent implements OnInit {
 
   properties$!: Observable<Property[]>;
 
+  buildings$!: Observable<Building[]>;
+
+  buildingId = '';
+  buildingName = '';
+
   constructor(
-    private propertyService: PropertyService
+    private propertyService: PropertyService,
+    private buildingService: BuildingService
   ) {}
 
   ngOnInit(): void {
-    this.properties$ = this.propertyService.getProperties();
+
+    this.properties$ =
+      this.propertyService.getProperties();
+
+    this.buildings$ =
+      this.buildingService.getBuildings();
   }
 
   async saveProperty() {
@@ -34,7 +47,8 @@ export class PropertiesComponent implements OnInit {
     if (
       !this.nombre ||
       !this.direccion ||
-      !this.valorArriendo
+      !this.valorArriendo ||
+      !this.buildingName
     ) {
       return;
     }
@@ -43,11 +57,15 @@ export class PropertiesComponent implements OnInit {
       nombre: this.nombre,
       direccion: this.direccion,
       valorArriendo: this.valorArriendo,
+      buildingId: '',
+      buildingName: this.buildingName,
       createdAt: new Date()
     });
 
     this.nombre = '';
     this.direccion = '';
     this.valorArriendo = 0;
+    this.buildingId = '';
+    this.buildingName = '';
   }
 }

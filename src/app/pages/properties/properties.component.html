@@ -17,6 +17,23 @@
     placeholder="Valor arriendo"
     [(ngModel)]="valorArriendo">
 
+    <select
+    [(ngModel)]="buildingName">
+
+    <option value="">
+        Seleccionar edificio
+    </option>
+
+    <option
+        *ngFor="let building of buildings$ | async"
+        [value]="building.nombre">
+
+        {{ building.nombre }}
+
+    </option>
+
+    </select>
+
   <button (click)="saveProperty()">
     Guardar Propiedad
   </button>
@@ -29,14 +46,18 @@
 
 <div *ngFor="let property of properties$ | async" class="property-card">
 
-  <h3>{{ property.nombre }}</h3>
+    <h3>{{ property.nombre }}</h3>
 
-  <p>
-    📍 {{ property.direccion }}
-  </p>
+    <p>
+        📍 {{ property.direccion }}
+    </p>
 
-  <p>
-    💰 ${{ property.valorArriendo }}
-  </p>
+    <p>
+        💰 ${{ property.valorArriendo }}
+    </p>
+
+    <p>
+    🏢 {{ property.buildingName }}
+    </p>
 
 </div>

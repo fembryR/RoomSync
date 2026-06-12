@@ -32,6 +32,13 @@ export class DashboardComponent {
     this.router.navigate(['/payments']);
   }
 
+  goToTickets() {
+
+    this.router.navigate([
+      '/tickets'
+    ]);
+  }
+
   async logout() {
 
     await this.authService.logout();
