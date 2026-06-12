@@ -1,10 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { Observable } from 'rxjs';
-
-import { Payment } from '../../models/payment';
-import { PaymentService } from '../../services/payment.service';
+import { Component } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,33 +8,33 @@ import { Router } from '@angular/router';
   templateUrl: './roomie-dashboard.component.html',
   styleUrl: './roomie-dashboard.component.scss'
 })
-export class RoomieDashboardComponent implements OnInit {
-
-  payments$!: Observable<Payment[]>;
+export class RoomieDashboardComponent {
 
   constructor(
     private router: Router,
-    private paymentService: PaymentService
+    private location: Location
   ) {}
 
-  ngOnInit(): void {
-
-    this.payments$ =
-      this.paymentService.getPayments();
-  }
-
-    goToTasks() {
-
+  goToTasks() {
     this.router.navigate([
       '/tasks'
     ]);
   }
 
-    goToTickets() {
-
+  goToTickets() {
     this.router.navigate([
       '/tickets'
     ]);
+  }
+
+  goToPayments() {
+    this.router.navigate([
+      '/roomie-payments'
+    ]);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

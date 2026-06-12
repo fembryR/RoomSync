@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Observable } from 'rxjs';
@@ -30,7 +30,8 @@ export class PropertiesComponent implements OnInit {
 
   constructor(
     private propertyService: PropertyService,
-    private buildingService: BuildingService
+    private buildingService: BuildingService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -67,5 +68,9 @@ export class PropertiesComponent implements OnInit {
     this.valorArriendo = 0;
     this.buildingId = '';
     this.buildingName = '';
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

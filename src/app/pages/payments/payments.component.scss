@@ -42,6 +42,28 @@ button {
   font-weight: bold;
 }
 
+.back-btn {
+
+  background: #6b7280;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 15px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  margin-bottom: 20px;
+}
+
+.back-btn:hover {
+
+  background: #4b5563;
+}
+
 .payment-card {
 
   background: white;

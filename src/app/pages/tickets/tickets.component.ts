@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 
 import { Observable } from 'rxjs';
 
@@ -24,7 +25,8 @@ export class TicketsComponent implements OnInit {
   tickets$!: Observable<Ticket[]>;
 
   constructor(
-    private ticketService: TicketService
+    private ticketService: TicketService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,10 @@ export class TicketsComponent implements OnInit {
 
     this.asunto = '';
     this.descripcion = '';
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

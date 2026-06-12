@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Observable } from 'rxjs';
@@ -24,7 +24,8 @@ export class TasksComponent implements OnInit {
   tasks$!: Observable<Task[]>;
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +45,10 @@ export class TasksComponent implements OnInit {
 
     this.titulo = '';
     this.fechaLimite = '';
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   async completeTask(id: string) {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 import { Payment } from '../../models/payment';
 import { PaymentService } from '../../services/payment.service';
@@ -27,7 +28,8 @@ export class PaymentsComponent implements OnInit {
   payments$!: Observable<Payment[]>;
 
   constructor(
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +53,10 @@ export class PaymentsComponent implements OnInit {
     this.estado = 'Pendiente';
     this.fechaVencimiento = '';
     this.departamento = '';
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

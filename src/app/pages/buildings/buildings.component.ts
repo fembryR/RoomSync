@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 import { Building } from '../../models/building';
 import { BuildingService } from '../../services/building.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-buildings',
@@ -22,7 +23,8 @@ export class BuildingsComponent implements OnInit {
   buildings$!: Observable<Building[]>;
 
   constructor(
-    private buildingService: BuildingService
+    private buildingService: BuildingService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,11 @@ export class BuildingsComponent implements OnInit {
     this.nombre = '';
     this.direccion = '';
     this.descripcion = '';
+  }
+
+    goBack() {
+
+    this.location.back();
   }
 
 }

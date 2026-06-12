@@ -1,1 +1,49 @@
-<p>roomie-payments works!</p>
+<button class="back-btn" (click)="goBack()">
+  ← Volver
+</button>
+
+<h1>💵 Mis Pagos</h1>
+
+<div
+  class="payment-card"
+  *ngFor="let payment of payments$ | async">
+
+  <h3>{{ payment.concepto }}</h3>
+
+  <p class="amount">
+    💰 ${{ payment.monto }}
+  </p>
+
+  <p
+    class="status"
+    [ngClass]="{
+      'paid': payment.estado === 'Pagado',
+      'pending': payment.estado === 'Pendiente',
+      'expired': payment.estado === 'Vencido'
+    }">
+
+    {{ payment.estado }}
+
+  </p>
+
+  <p>
+    🏠 Depto {{ payment.departamento }}
+  </p>
+
+  <button (click)="toggleTransfer(payment.id)">
+    {{ selectedPaymentId === payment.id ? 'Ocultar datos de transferencia' : '💳 Ver datos de transferencia' }}
+  </button>
+
+  <div class="transfer-info" *ngIf="selectedPaymentId === payment.id">
+
+    <p>🏦 Banco Estado</p>
+
+    <p>📄 Cuenta Corriente</p>
+
+    <p>🔢 12345678</p>
+
+    <p>👤 Inmobiliaria RoomSync</p>
+
+  </div>
+
+</div>

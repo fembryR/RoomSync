@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 import { Expense } from '../../models/expense';
 import { ExpenseService } from '../../services/expense.service';
@@ -22,7 +23,8 @@ export class ExpensesComponent implements OnInit {
   expenses$!: Observable<Expense[]>;
 
   constructor(
-    private expenseService: ExpenseService
+    private expenseService: ExpenseService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -49,5 +51,9 @@ export class ExpensesComponent implements OnInit {
     this.nombre = '';
     this.monto = 0;
     this.categoria = '';
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

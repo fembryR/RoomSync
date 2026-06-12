@@ -7,6 +7,7 @@ import { PropertiesComponent } from './pages/properties/properties.component';
 import { ExpensesComponent } from './pages/expenses/expenses.component';
 import { BuildingsComponent } from './pages/buildings/buildings.component';
 import { RoomieDashboardComponent } from './pages/roomie-dashboard/roomie-dashboard.component';
+import { RoomiePaymentsComponent } from './pages/roomie-payments/roomie-payments.component';
 import { adminGuard } from './guards/admin.guard';
 import { roomieGuard } from './guards/roomie.guard';
 import { PaymentsComponent } from './pages/payments/payments.component';
@@ -49,6 +50,11 @@ export const routes: Routes = [
     {
         path: 'roomie-dashboard',
         component: RoomieDashboardComponent,
+        canActivate: [roomieGuard]
+    },
+    {
+        path: 'roomie-payments',
+        component: RoomiePaymentsComponent,
         canActivate: [roomieGuard]
     },
     {

@@ -1,8 +1,12 @@
 <h1>🏠 Portal del Arrendatario</h1>
 
+<button class="back-btn" (click)="goBack()">
+  ← Volver
+</button>
+
 <div class="menu">
 
-    <button>
+    <button (click)="goToPayments()">
         💵 Mis Pagos
     </button>
 
@@ -18,50 +22,3 @@
         💰 Gastos Compartidos
     </button>
 
-</div>
-
-<h2>💵 Mis Pagos</h2>
-
-<div
-  class="payment-card"
-  *ngFor="let payment of payments$ | async">
-
-  <h3>{{ payment.concepto }}</h3>
-
-  <p class="amount">
-    💰 ${{ payment.monto }}
-  </p>
-
-  <p
-    class="status"
-    [ngClass]="{
-      'paid': payment.estado === 'Pagado',
-      'pending': payment.estado === 'Pendiente',
-      'expired': payment.estado === 'Vencido'
-    }">
-
-    {{ payment.estado }}
-
-  </p>
-
-  <p>
-    🏠 Depto {{ payment.departamento }}
-  </p>
-
-  <button>
-    💳 Ver datos de transferencia
-  </button>
-
-  <div class="transfer-info">
-
-    <p>🏦 Banco Estado</p>
-
-    <p>📄 Cuenta Corriente</p>
-
-    <p>🔢 12345678</p>
-
-    <p>👤 Inmobiliaria RoomSync</p>
-
-  </div>
-
-</div>
