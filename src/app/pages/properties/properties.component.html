@@ -1,0 +1,42 @@
+<h1>🏠 Gestión de Propiedades</h1>
+
+<div class="form-container">
+
+  <input
+    type="text"
+    placeholder="Nombre propiedad"
+    [(ngModel)]="nombre">
+
+  <input
+    type="text"
+    placeholder="Dirección"
+    [(ngModel)]="direccion">
+
+  <input
+    type="number"
+    placeholder="Valor arriendo"
+    [(ngModel)]="valorArriendo">
+
+  <button (click)="saveProperty()">
+    Guardar Propiedad
+  </button>
+
+</div>
+
+<hr>
+
+<h2>Propiedades Registradas</h2>
+
+<div *ngFor="let property of properties$ | async" class="property-card">
+
+  <h3>{{ property.nombre }}</h3>
+
+  <p>
+    📍 {{ property.direccion }}
+  </p>
+
+  <p>
+    💰 ${{ property.valorArriendo }}
+  </p>
+
+</div>

@@ -1,0 +1,42 @@
+<h1>💰 Gestión de Gastos</h1>
+
+<div class="form-container">
+
+  <input
+    type="text"
+    placeholder="Nombre del gasto"
+    [(ngModel)]="nombre">
+
+  <input
+    type="number"
+    placeholder="Monto"
+    [(ngModel)]="monto">
+
+  <input
+    type="text"
+    placeholder="Categoría"
+    [(ngModel)]="categoria">
+
+  <button (click)="saveExpense()">
+    Guardar Gasto
+  </button>
+
+</div>
+
+<hr>
+
+<h2>Gastos Registrados</h2>
+
+<div *ngFor="let expense of expenses$ | async" class="expense-card">
+
+  <h3>{{ expense.nombre }}</h3>
+
+  <p>
+    💰 ${{ expense.monto }}
+  </p>
+
+  <p>
+    📂 {{ expense.categoria }}
+  </p>
+
+</div>
