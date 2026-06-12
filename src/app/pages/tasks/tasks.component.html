@@ -1,0 +1,56 @@
+<h1>🧹 Tareas Compartidas</h1>
+
+<input
+  type="text"
+  placeholder="Nombre de la tarea"
+  [(ngModel)]="titulo">
+
+<input
+  type="date"
+  [(ngModel)]="fechaLimite">
+
+<button (click)="saveTask()">
+  ➕ Crear tarea
+</button>
+
+<hr>
+
+<h2>Lista de tareas</h2>
+
+<div
+  class="task-card"
+  *ngFor="let task of tasks$ | async">
+
+  <h3>
+
+    <span *ngIf="task.completada">
+      ✅
+    </span>
+
+    <span *ngIf="!task.completada">
+      ⬜
+    </span>
+
+    {{ task.titulo }}
+
+  </h3>
+
+  <p>
+    👤 Creado por:
+    {{ task.creadoPor }}
+  </p>
+
+  <p>
+    📅 Fecha límite:
+    {{ task.fechaLimite }}
+  </p>
+
+  <button
+    *ngIf="!task.completada"
+    (click)="completeTask(task.id!)">
+
+    ✔ Completar
+
+  </button>
+
+</div>

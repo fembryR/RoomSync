@@ -1,0 +1,41 @@
+<h1>🔧 Solicitudes y Mantenciones</h1>
+
+<input
+  type="text"
+  placeholder="Asunto"
+  [(ngModel)]="asunto">
+
+<textarea
+  placeholder="Descripción"
+  [(ngModel)]="descripcion">
+</textarea>
+
+<button (click)="saveTicket()">
+  📩 Crear Ticket
+</button>
+
+<hr>
+
+<h2>Tickets Registrados</h2>
+
+<div
+  class="ticket-card"
+  *ngFor="let ticket of tickets$ | async">
+
+  <h3>
+    {{ ticket.asunto }}
+  </h3>
+
+  <p>
+    {{ ticket.descripcion }}
+  </p>
+
+  <p>
+    👤 {{ ticket.creadoPor }}
+  </p>
+
+  <p>
+    📌 {{ ticket.estado }}
+  </p>
+
+</div>

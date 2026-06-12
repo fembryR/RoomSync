@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Payment } from '../../models/payment';
 import { PaymentService } from '../../services/payment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-roomie-dashboard',
@@ -17,6 +18,7 @@ export class RoomieDashboardComponent implements OnInit {
   payments$!: Observable<Payment[]>;
 
   constructor(
+    private router: Router,
     private paymentService: PaymentService
   ) {}
 
@@ -24,6 +26,20 @@ export class RoomieDashboardComponent implements OnInit {
 
     this.payments$ =
       this.paymentService.getPayments();
+  }
+
+    goToTasks() {
+
+    this.router.navigate([
+      '/tasks'
+    ]);
+  }
+
+    goToTickets() {
+
+    this.router.navigate([
+      '/tickets'
+    ]);
   }
 
 }
