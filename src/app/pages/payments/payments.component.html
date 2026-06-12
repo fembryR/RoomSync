@@ -1,0 +1,65 @@
+<h1>💰 Gestión de Cobros</h1>
+
+<input
+  type="text"
+  placeholder="Concepto"
+  [(ngModel)]="concepto">
+
+<input
+  type="number"
+  placeholder="Monto"
+  [(ngModel)]="monto">
+
+<input
+  type="text"
+  placeholder="Departamento"
+  [(ngModel)]="departamento">
+
+<input
+  type="date"
+  [(ngModel)]="fechaVencimiento">
+
+<select [(ngModel)]="estado">
+
+  <option>
+    Pendiente
+  </option>
+
+  <option>
+    Pagado
+  </option>
+
+  <option>
+    Vencido
+  </option>
+
+</select>
+
+<button (click)="savePayment()">
+  Guardar Cobro
+</button>
+
+<hr>
+
+<h2>Pagos Registrados</h2>
+
+<div
+  *ngFor="let payment of payments$ | async">
+
+  <h3>
+    {{ payment.concepto }}
+  </h3>
+
+  <p>
+    💵 ${{ payment.monto }}
+  </p>
+
+  <p>
+    Estado: {{ payment.estado }}
+  </p>
+
+  <p>
+    Departamento: {{ payment.departamento }}
+  </p>
+
+</div>

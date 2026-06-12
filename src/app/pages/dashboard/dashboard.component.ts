@@ -28,6 +28,10 @@ export class DashboardComponent {
     this.router.navigate(['/buildings']);
   }
 
+  goToPayments() {
+    this.router.navigate(['/payments']);
+  }
+
   async logout() {
 
     await this.authService.logout();
