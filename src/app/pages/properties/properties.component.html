@@ -46,7 +46,13 @@
 
 <div *ngFor="let property of properties$ | async" class="property-card">
 
-    <h3>{{ property.nombre }}</h3>
+    <div class="building-badge">
+        🏢 {{ property.buildingName }}
+    </div>
+
+    <h3>
+        🏠 {{ property.nombre }}
+    </h3>
 
     <p>
         📍 {{ property.direccion }}
@@ -54,10 +60,6 @@
 
     <p>
         💰 ${{ property.valorArriendo }}
-    </p>
-
-    <p>
-    🏢 {{ property.buildingName }}
     </p>
 
 </div>

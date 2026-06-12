@@ -44,7 +44,8 @@
 <h2>Pagos Registrados</h2>
 
 <div
-  *ngFor="let payment of payments$ | async">
+    class="payment-card"
+    *ngFor="let payment of payments$ | async">
 
   <h3>
     {{ payment.concepto }}
@@ -54,9 +55,17 @@
     💵 ${{ payment.monto }}
   </p>
 
-  <p>
-    Estado: {{ payment.estado }}
-  </p>
+    <p
+    class="status"
+    [ngClass]="{
+        'paid': payment.estado === 'Pagado',
+        'pending': payment.estado === 'Pendiente',
+        'expired': payment.estado === 'Vencido'
+    }">
+
+    {{ payment.estado }}
+
+    </p>
 
   <p>
     Departamento: {{ payment.departamento }}
