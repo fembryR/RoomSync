@@ -22,7 +22,8 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  async login() {
+    async login() {
+
     try {
 
       this.error = '';
@@ -32,7 +33,22 @@ export class LoginComponent {
         this.password
       );
 
-      await this.router.navigate(['/dashboard']);
+      const role =
+        await this.authService.getUserRole();
+
+      if (role === 'admin') {
+
+        await this.router.navigate([
+          '/dashboard'
+        ]);
+
+      } else {
+
+        await this.router.navigate([
+          '/roomie-dashboard'
+        ]);
+
+      }
 
     } catch (error: any) {
 

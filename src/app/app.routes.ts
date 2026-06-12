@@ -5,6 +5,10 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PropertiesComponent } from './pages/properties/properties.component';
 import { ExpensesComponent } from './pages/expenses/expenses.component';
+import { BuildingsComponent } from './pages/buildings/buildings.component';
+import { RoomieDashboardComponent } from './pages/roomie-dashboard/roomie-dashboard.component';
+import { adminGuard } from './guards/admin.guard';
+import { roomieGuard } from './guards/roomie.guard';
 
 
 export const routes: Routes = [
@@ -23,7 +27,8 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [adminGuard]
     },
     {
         path: 'properties',
@@ -32,5 +37,16 @@ export const routes: Routes = [
     {
         path: 'expenses',
         component: ExpensesComponent
+    },
+    {
+        path: 'buildings',
+        component: BuildingsComponent
+    },
+    {
+        path: 'roomie-dashboard',
+        component: RoomieDashboardComponent,
+        canActivate: [roomieGuard]
     }
+
+    
 ];

@@ -1,0 +1,40 @@
+<h1>🏢 Gestión de Edificios</h1>
+
+<div class="form-container">
+
+  <input
+    type="text"
+    placeholder="Nombre edificio"
+    [(ngModel)]="nombre">
+
+  <input
+    type="text"
+    placeholder="Dirección"
+    [(ngModel)]="direccion">
+
+  <textarea
+    placeholder="Descripción"
+    [(ngModel)]="descripcion">
+  </textarea>
+
+  <button (click)="saveBuilding()">
+    Guardar Edificio
+  </button>
+
+</div>
+
+<hr>
+
+<h2>Edificios Registrados</h2>
+
+<div
+  *ngFor="let building of buildings$ | async"
+  class="building-card">
+
+  <h3>{{ building.nombre }}</h3>
+
+  <p>📍 {{ building.direccion }}</p>
+
+  <p>{{ building.descripcion }}</p>
+
+</div>

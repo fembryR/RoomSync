@@ -1,9 +1,31 @@
-<h1>🏠 RoomSync</h1>
-
-<button (click)="goToProperties()">
-  Propiedades
+<button (click)="logout()">
+  🚪 Cerrar Sesión
 </button>
 
-<button (click)="goToExpenses()">
-  Gastos
-</button>
+<hr>
+
+<h1>🏢 Panel Administrador</h1>
+
+<div class="cards">
+
+  <div class="card" (click)="goToBuildings()">
+    <h2>🏢 Edificios</h2>
+    <p>Gestionar edificios</p>
+  </div>
+
+  <div class="card" (click)="goToProperties()">
+    <h2>🏠 Departamentos</h2>
+    <p>Gestionar departamentos</p>
+  </div>
+
+  <div class="card" (click)="goToExpenses()">
+    <h2>💰 Cobros</h2>
+    <p>Gestionar gastos y arriendos</p>
+  </div>
+
+  <div class="card">
+    <h2>🔧 Tickets</h2>
+    <p>Solicitudes y mantenciones</p>
+  </div>
+
+</div>
